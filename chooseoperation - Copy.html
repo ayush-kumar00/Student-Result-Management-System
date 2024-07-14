@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login and Sign Up</title>
+<style>
+    body {
+        background-image: url("4.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    
+    p {
+        text-align: center;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        margin: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<p>Please select an option:</p>
+
+<div class="button-container">
+    <button id="loginButton"><a href="loginS.html" style="text-decoration: none; color: inherit;">Login</a></button>
+    <button id="signUpButton"><a href="signupS.html" style="text-decoration: none; color: inherit;">Sign Up</a></button>
+</div>
+
+<script>
+    document.getElementById("loginButton").addEventListener("click", function() {
+        alert("Redirecting to Login page...");
+        // You can add code here to redirect the user to the login page
+    });
+
+    document.getElementById("signUpButton").addEventListener("click", function() {
+        alert("Redirecting to Sign Up page...");
+        // You can add code here to redirect the user to the sign up page
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Grades</title>
+  <style>
+    body {
+      background-image: url("9.jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 400px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+    }
+    .input-group input:focus {
+      border-color: #4CAF50;
+    }
+    .btn-container {
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .input-group .subject-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    .input-group .subject-group input[type="text"] {
+      width: 68%;
+    }
+    .input-group .subject-group input[type="number"] {
+      width: 30%;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Course Grades</h2>
+
+  <form id="gradesForm" action="a1.php" method="POST">
+    <div class="input-group">
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" name="studentName" placeholder="Enter Student Name" required>
+      <span class="error-message" id="studentNameError">Name must contain only letters and spaces.</span>
+    </div>
+
+    <div class="input-group">
+      <label for="enrollmentNumber">Enrollment Number:</label>
+      <input type="text" id="enrollmentNumber" name="enrollmentNumber" placeholder="Enter Enrollment Number" required>
+    </div>
+
+    <div class="input-group">
+      <label for="courseName">Course Name:</label>
+      <input type="text" id="courseName" name="courseName" placeholder="Enter Course Name" required>
+      <span class="error-message" id="courseNameError">Course name must contain only letters and spaces.</span>
+    </div>
+
+    <div class="input-group">
+      <label for="semesterNumber">Semester Number:</label>
+      <input type="number" id="semesterNumber" name="semesterNumber" placeholder="Enter Semester Number" min="1" max="10" required>
+      <span class="error-message" id="semesterNumberError">Semester number must be between 1 and 10.</span>
+    </div>
+
+    <!-- Subject 1 -->
+    <div class="input-group">
+      <label for="subject1">Subject 1:</label>
+      <div class="subject-group">
+        <input type="text" id="subject1" name="subject1" placeholder="Subject Name" required>
+        <input type="number" id="marks1" name="marks1" placeholder="Marks" min="0" max="100" required>
+      </div>
+      <span class="error-message" id="subject1Error">Subject name must contain only letters and spaces. Marks must be between 0 and 100.</span>
+    </div>
+
+    <!-- Subject 2 -->
+    <div class="input-group">
+      <label for="subject2">Subject 2:</label>
+      <div class="subject-group">
+        <input type="text" id="subject2" name="subject2" placeholder="Subject Name" required>
+        <input type="number" id="marks2" name="marks2" placeholder="Marks" min="0" max="100" required>
+      </div>
+      <span class="error-message" id="subject2Error">Subject name must contain only letters and spaces. Marks must be between 0 and 100.</span>
+    </div>
+
+    <!-- Subject 3 -->
+    <div class="input-group">
+      <label for="subject3">Subject 3:</label>
+      <div class="subject-group">
+        <input type="text" id="subject3" name="subject3" placeholder="Subject Name" required>
+        <input type="number" id="marks3" name="marks3" placeholder="Marks" min="0" max="100" required>
+      </div>
+      <span class="error-message" id="subject3Error">Subject name must contain only letters and spaces. Marks must be between 0 and 100.</span>
+    </div>
+
+    <!-- Subject 4 -->
+    <div class="input-group">
+      <label for="subject4">Subject 4:</label>
+      <div class="subject-group">
+        <input type="text" id="subject4" name="subject4" placeholder="Subject Name" required>
+        <input type="number" id="marks4" name="marks4" placeholder="Marks" min="0" max="100" required>
+      </div>
+      <span class="error-message" id="subject4Error">Subject name must contain only letters and spaces. Marks must be between 0 and 100.</span>
+    </div>
+
+    <!-- Subject 5 -->
+    <div class="input-group">
+      <label for="subject5">Subject 5:</label>
+      <div class="subject-group">
+        <input type="text" id="subject5" name="subject5" placeholder="Subject Name" required>
+        <input type="number" id="marks5" name="marks5" placeholder="Marks" min="0" max="100" required>
+      </div>
+      <span class="error-message" id="subject5Error">Subject name must contain only letters and spaces. Marks must be between 0 and 100.</span>
+    </div>
+
+    <div class="btn-container">
+      <button type="submit" id="recordBtn" class="btn">record</button>
+      <button type="button" id="calculatePercentageBtn" class="btn">Calculate Aggregate Percentage</button>
+    </div>
+  </form>
+  
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById("gradesForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var isValid = true;
+
+    var namePattern = /^[A-Za-z\s]+$/;
+    var coursePattern = /^[A-Za-z\s]+$/;
+    var semesterPattern = /^[1-9]|10$/;
+
+    // Validate student name
+    var studentName = document.getElementById("studentName").value;
+    if (!namePattern.test(studentName)) {
+      document.getElementById("studentNameError").style.display = "block";
+      isValid = false;
+    } else {
+      document.getElementById("studentNameError").style.display = "none";
+    }
+
+    // Validate course name
+    var courseName = document.getElementById("courseName").value;
+    if (!coursePattern.test(courseName)) {
+      document.getElementById("courseNameError").style.display = "block";
+      isValid = false;
+    } else {
+      document.getElementById("courseNameError").style.display = "none";
+    }
+
+    // Validate semester number
+    var semesterNumber = document.getElementById("semesterNumber").value;
+    if (!semesterPattern.test(semesterNumber)) {
+      document.getElementById("semesterNumberError").style.display = "block";
+      isValid = false;
+    } else {
+      document.getElementById("semesterNumberError").style.display = "none";
+    }
+
+    // Validate subjects and marks
+    for (var i = 1; i <= 5; i++) {
+      var subjectName = document.getElementById("subject" + i).value;
+      var subjectMarks = document.getElementById("marks" + i).value;
+
+      var subjectPattern = /^[A-Za-z\s]+$/;
+      var marksPattern = /^([0-9]|[1-9][0-9]|100)$/;
+
+      if (!subjectPattern.test(subjectName) || !marksPattern.test(subjectMarks)) {
+        document.getElementById("subject" + i + "Error").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("subject" + i + "Error").style.display = "none";
+      }
+    }
+
+    if (isValid) {
+      var formData = new FormData(document.getElementById("gradesForm"));
+
+      fetch('a2.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById('result').innerHTML = data;
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+    }
+  });
+
+  document.getElementById("calculatePercentageBtn").addEventListener("click", function() {
+    var totalMarks = 0;
+    var totalSubjects = 5;
+
+    for (var i = 1; i <= totalSubjects; i++) {
+      var marks = parseInt(document.getElementById("marks" + i).value);
+      totalMarks += marks;
+    }
+
+    var aggregatePercentage = (totalMarks / (totalSubjects * 100)) * 100;
+
+    alert("Aggregate Percentage: " + aggregatePercentage.toFixed(2) + "%");
+  });
+</script>
+
+</body>
+</html>

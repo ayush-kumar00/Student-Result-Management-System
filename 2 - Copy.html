@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aggregate Percentage Calculator</title>
+  <style>
+    /* Your CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .input-group input[type="number"] {
+      width: 100px;
+      padding: 5px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Aggregate Percentage Calculator</h2>
+
+  <form id="marksForm">
+    <div id="semesterInputs"></div>
+    <button id="addSemesterBtn" class="btn">Add Semester</button>
+    <button id="calculateBtn" class="btn">Calculate Percentage</button>
+  </form>
+  
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById("addSemesterBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default button action
+    
+    // Create input fields for a new semester
+    var semesterInputs = document.getElementById("semesterInputs");
+    var semesterNumber = semesterInputs.children.length + 1;
+    var semesterInput = document.createElement("div");
+    semesterInput.classList.add("input-group");
+    semesterInput.innerHTML = `
+      <label for="semester${semesterNumber}">Semester ${semesterNumber}:</label>
+      <input type="number" id="semester${semesterNumber}" name="semester${semesterNumber}" placeholder="Marks" min="0" max="100" required>
+    `;
+    semesterInputs.appendChild(semesterInput);
+  });
+
+  document.getElementById("calculateBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get marks of all semesters
+    var marksInputs = document.querySelectorAll('[id^="semester"]');
+    var totalMarks = 0;
+    var totalSemesters = 0;
+
+    // Calculate total marks
+    marksInputs.forEach(function(input) {
+      var marks = parseFloat(input.value);
+      if (!isNaN(marks)) {
+        totalMarks += marks;
+        totalSemesters++;
+      }
+    });
+
+    // Calculate aggregate percentage
+    var percentage = (totalMarks / (totalSemesters * 100)) * 100;
+
+    // Display result
+    document.getElementById("result").innerHTML = "Aggregate Percentage: " + percentage.toFixed(2) + "%";
+  });
+</script>
+
+</body>
+</html>

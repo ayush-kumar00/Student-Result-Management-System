@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+     background-image: url("5.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+      width: 320px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #4CAF50;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .forgot-password a {
+      color: #777;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .forgot-password a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+  <form id="loginForm" action="/resultPage.html">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" value="Login">
+  </form>
+  <!-- Forgot Password link -->
+  <p class="forgot-password"><a href="forgot password.html">Forgot Password?</a></p>
+</div>
+
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // You can add your own logic here to check the username and password
+    // For demonstration purposes, let's just check if username and password are not empty
+    if (username.trim() === "" || password.trim() === "") {
+      alert("Please enter both username and password");
+    } else {
+      // If validation passes, you can redirect the user to another page or perform any other action
+      window.location.href = "course_grades.html";
+      // Example redirection
+      // window.location.href = "dashboard.html";
+    }
+  });
+</script>
+
+</body>
+</html>

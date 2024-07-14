@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grades RecordsS</title>
+  <style>
+    body {
+      background-image: url("10.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .input-group input[type="number"] {
+      width: 100px;
+      padding: 5px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #gradesRecords {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    #gradesRecords table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    #gradesRecords th, #gradesRecords td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    #gradesRecords th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Aggregate Percentage</h2>
+
+  <!-- Aggregate Percentage Calculator Section -->
+  <div id="aggregatePercentageSection">
+    <h3>Aggregate Percentage Calculator</h3>
+
+    <form id="percentageForm">
+      <div id="semesterInputs"></div>
+      <button id="addSemesterBtn" class="btn">Add Semester</button>
+      <button id="calculateBtn" class="btn">Calculate Percentage</button>
+    </form>
+    
+    <div id="result"></div>
+  </div>
+
+  <hr>
+
+  <!-- Display Grades Records Section -->
+  <div id="gradesRecordsSection">
+    <h3>Grades Records</h3>
+
+    <div id="gradesRecords">
+      <!-- Records will be displayed here dynamically -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // Function to fetch and display grades records
+  function fetchAndDisplayGrades() {
+    fetch('a2.php')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('gradesRecords').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  // Function to add input fields for a new semester
+  document.getElementById("addSemesterBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default button action
+    
+    var semesterInputs = document.getElementById("semesterInputs");
+    var semesterNumber = semesterInputs.children.length + 1;
+    var semesterInput = document.createElement("div");
+    semesterInput.classList.add("input-group");
+    semesterInput.innerHTML = `
+      <label for="semester${semesterNumber}">Semester ${semesterNumber}:</label>
+      <input type="number" id="semester${semesterNumber}" name="semester${semesterNumber}" placeholder="percentage" min="0" max="100" required>
+    `;
+    semesterInputs.appendChild(semesterInput);
+  });
+
+  // Function to calculate aggregate percentage
+  document.getElementById("calculateBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    var percentageInputs = document.querySelectorAll('[id^="semester"]');
+    var totalPercentage = 0;
+    var totalSemesters = 0;
+
+    percentageInputs.forEach(function(input) {
+      var percentage = parseFloat(input.value);
+      if (!isNaN(percentage)) {
+        totalPercentage += percentage;
+        totalSemesters++;
+      }
+    });
+
+    var percentage = (totalPercentage / (totalSemesters * 100)) * 100;
+
+    document.getElementById("result").innerHTML = "Aggregate Percentage: " + percentage.toFixed(2) + "%";
+  });
+
+  // Fetch and display grades records on page load
+  fetchAndDisplayGrades();
+</script>
+
+</body>
+</html>
