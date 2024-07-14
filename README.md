@@ -1,8 +1,10 @@
  Introduction
+ 
 The Student Result Management System is a web application designed to manage and calculate students' academic performance. It allows users to input, store, and retrieve student grades and calculate aggregate
 percentages dynamically. The system aims to streamline the process of managing student records and provide an easy-to-use interface for both students and administrators.
 
 Features
+
 Student Registration: Sign-up page with fields for name, phone number, email, enrollment number, and course name.
 
 Login: Secure login functionality for both students and administrators.
@@ -17,6 +19,7 @@ Responsive Design: User-friendly interface that works on various devices.
 
 
 Technologies Used
+
 HTML5: Structure and content of the web pages.
 
 CSS3: Styling and layout of the web pages.
@@ -28,6 +31,7 @@ PHP: Backend server.
 MySQL: Database for storing student records.
 
  Usage
+
 Register a new student:
 Fill out the sign-up form with the required information.
 Submit the form to create a new student account.
