@@ -1,25 +1,50 @@
-# National-Insurance
+# Student-Result-Management-System
 
 
-The National Insurance System project is a C++ based application designed to manage and streamline the processes related to national insurance. The system aims to provide a robust platform for both administrators and users to handle insurance-related tasks efficiently. The primary functionalities of the system include user registration, policy management, premium calculations, and claims processing.
+The Student Result Management System is a web application designed to manage and calculate students' academic performance. It allows users to input, store, and retrieve student grades and calculate aggregate percentages dynamically. The system aims to streamline the process of managing student records and provide an easy-to-use interface for both students and administrators.
 
 Key Features:
 
-User Registration: The system allows individuals to register for national insurance by providing necessary personal and contact information. Users can create accounts and log in securely.
+Student Registration: Sign-up page with fields for name, phone number, email, enrollment number, and course name.
 
-Policy Management: Administrators can define and manage different types of insurance policies offered by the national insurance system. This includes setting coverage limits, premium rates, and policy terms.
+Login: Secure login functionality for both students and administrators.
 
-User Dashboard: Each user has a personalized dashboard where they can view their insurance policies, premium payment history, and submit and track insurance claims.
+Grade Entry: Dynamic addition of semester percentage inputs.
 
-Security Measures: The system incorporates security features to safeguard sensitive user data and ensure the confidentiality and integrity of the insurance-related information.
+Validation: Form validation to ensure correct data entry.
+
+Result Calculation: Automatic calculation of aggregate percentages.
+
+Responsive Design: User-friendly interface that works on various devices.
 
 Technologies Used:
 
-C++ programming language for the backend logic.
-File handling for data storage and retrieval.
+HTML5: Structure and content of the web pages.
 
-Potential Extensions:
+CSS3: Styling and layout of the web pages.
 
-Integration with a database for more efficient data management.
-Expansion to include additional insurance-related features such as policy renewals and policy cancellations.
-This project serves as a foundation for a comprehensive national insurance management system, providing an organized and user-friendly platform for both administrators and policyholders.
+JavaScript: Form validation, dynamic content handling, and interactivity.
+
+PHP: Backend server.
+
+MySQL: Database for storing student records.
+
+
+Usage:
+
+Register a new student:
+Fill out the sign-up form with the required information.
+Submit the form to create a new student account.
+
+Login:
+Enter your email and password to access your account.
+
+Forgot Password:
+Enter the email ID to get a link to change the password on the registered email.
+
+Add Grades:
+Add student's details along with the subject marks dynamically.
+Submit to save the grades.
+
+View Results:
+View the calculated aggregate percentages.
