@@ -38,11 +38,9 @@ Register a new student:
 Fill out the sign-up form with the required information.
 Submit the form to create a new student account.
 
-Login:
-Enter your email and password to access your account.
+Login:Enter your email and password to access your account.
 
-Forgot Password:
-Enter the email ID to get a link to change the password on the registered email.
+Forgot Password:Enter the email ID to get a link to change the password on the registered email.
 
 Add Grades:
 Add student's details along with the subject marks dynamically.
